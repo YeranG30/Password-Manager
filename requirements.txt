@@ -1,0 +1,5 @@
+cryptography==3.4.7
+easygui==0.98.2
+pyfiglet==0.8.post1
+requests==2.25.1
+passlib==1.7.4
