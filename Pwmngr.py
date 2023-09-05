@@ -13,6 +13,8 @@ from passlib.hash import argon2
 
 
 
+
+
 #Main class for managing passwords.
 class PasswordManager:
     # Initialize the application, set up encryption keys, and call login.
@@ -49,6 +51,7 @@ class PasswordManager:
 
 #manages user login and account creation
     def login(self):
+        global hashed_password, row
         self.banner()
         while True:
             print("\n" + "=" * 50)
@@ -64,7 +67,6 @@ class PasswordManager:
             if choice == '1':
                 username = input("Enter your username: ")
                 password = input("Enter your password: ")
-                hashed_password = argon2.hash(password)
 
                 self.cursor.execute("SELECT password_hash FROM users WHERE username=?", (username,))
                 row = self.cursor.fetchone()
@@ -75,10 +77,9 @@ class PasswordManager:
                         print("\nLogin successful!\n")
                         return True
                     else:
-                        print("\nIncorrect password.\n")
+                        print("\nIncorrect credentials.\n")  # Changed this line
                 else:
-                    print("\nUsername does not exist.\n")
-
+                    print("\nIncorrect credentials.\n")
 
             elif choice == '2':
                 username = input("Enter your new username: ")  # This should work
@@ -107,6 +108,7 @@ class PasswordManager:
                     self.clear_console()  # <-- Clear console after successful login
                     print("\nLogin successful!\n")
                     return True
+
     #main menu
     def run(self):
         self.banner()
@@ -280,6 +282,9 @@ class PasswordManager:
             print(f"Password for {pw_name} has been removed.")
         else:
             print(f"Password for {pw_name} not found.")
+
+    def clear_console(self):
+        pass
 
 
 if __name__ == "__main__":
