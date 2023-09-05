@@ -1,5 +1,6 @@
-cryptography==3.4.7
+cryptography==3.4.8
 easygui==0.98.2
+requests==2.26.0
 pyfiglet==0.8.post1
-requests==2.25.1
+sqlite3==3.36.0  # This may not be necessary, as sqlite3 is in the Python Standard Library
 passlib==1.7.4
