@@ -1,5 +1,6 @@
 #Import required modules and packages for the application.
 from cryptography.fernet import Fernet
+from password_strength import PasswordPolicy
 from easygui import passwordbox
 import random
 import string
@@ -8,8 +9,8 @@ import hashlib
 import requests
 import pyfiglet
 import sqlite3
-import os
 from passlib.hash import argon2
+from passgen import passgen
 
 
 
@@ -22,6 +23,7 @@ class PasswordManager:
         self.key = b'CxVuqDntmYR7WKpDfUsEtYXw5b2rJBuTpuBlfSqKe4w='
         self.cipher_suite = Fernet(self.key)
         self.init_db()
+        self.ensure_password_column_exists()
         self.login()
         self.run()
 
@@ -37,7 +39,7 @@ class PasswordManager:
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS users (
                 username TEXT PRIMARY KEY,
-                password_hash TEXT
+                password TEXT
             );
         """)
         self.cursor.execute("""
@@ -49,7 +51,18 @@ class PasswordManager:
         """)
         self.conn.commit()
 
-#manages user login and account creation
+    def ensure_password_column_exists(self):
+        # First, fetch existing columns
+        self.cursor.execute("PRAGMA table_info(users);")
+        columns = [column[1] for column in self.cursor.fetchall()]
+
+        # Check if 'password' column exists
+        if 'password' not in columns:
+            # Add 'password' column
+            self.cursor.execute("ALTER TABLE users ADD COLUMN password TEXT")
+            self.conn.commit()
+
+    #manages user login and account creation
     def login(self):
         global hashed_password, row
         self.banner()
@@ -68,7 +81,7 @@ class PasswordManager:
                 username = input("Enter your username: ")
                 password = input("Enter your password: ")
 
-                self.cursor.execute("SELECT password_hash FROM users WHERE username=?", (username,))
+                self.cursor.execute("SELECT password FROM users WHERE username=?", (username,))
                 row = self.cursor.fetchone()
 
                 if row:
@@ -86,17 +99,18 @@ class PasswordManager:
                 password = input("Enter your new master password: ")  # Temporary, for debugging
                 hashed_password = argon2.hash(password)
                 try:
-                    self.cursor.execute("INSERT INTO users (username, password_hash) VALUES (?, ?)",
+                    self.cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)",
                                         (username, hashed_password))
                     self.conn.commit()
                     print("\nAccount successfully created! Please login with your new credentials.\n")
                     continue
+
+                    self.cursor.execute("ALTER TABLE users ADD COLUMN password TEXT")
+
+
                 except sqlite3.IntegrityError:
                     print("\nUsername already exists. Choose a different username.\n")
-                    continue  # Go back to the login screen
-            elif choice == '3':
-                print("Exiting...")
-                exit(0)
+                    continue  
             elif choice == '3':
                 print("Exiting...")
                 exit(0)
@@ -145,19 +159,22 @@ class PasswordManager:
                 print("Invalid Choice, Please choose again! ")
 
     # checks password strength (need to make this more selective)
+    # checks password strength (using password_strength library)
     def check_password_strength(self, password):
-        length_req_met = len(password) >= 12
-        uppercase_req_met = any(c.isupper() for c in password)
-        lowercase_req_met = any(c.islower() for c in password)
-        digit_req_met = any(c.isdigit() for c in password)
-        special_char_req_met = any(c in "!@#$%^&*()-_=+[]{}|;:,.<>?/" for c in password)
+        policy = PasswordPolicy.from_names(
+            length=12,  # min length: 12
+            uppercase=2,  # need min. 2 uppercase letters
+            numbers=3,  # need min. 3 digits
+            special=2,  # need min. 2 special characters
+            nonletters=4,  # need min. 2 of either digits or special characters
+        )
 
-        if all([length_req_met, uppercase_req_met, lowercase_req_met, digit_req_met, special_char_req_met]):
-            return True
-        else:
+        if policy.test(password):
             return False
+        else:
+            return True
 
-#Adds a password to the database.
+    #Adds a password to the database.
     def add_password(self):
         pw_name = input("Enter the website used for the password: ")
         password = passwordbox("Enter the password: ")
@@ -205,19 +222,28 @@ class PasswordManager:
 
 # generates strong password ( not realistic password, need to make more personal)
     def generate_strong_password(self):
-        length = 16
-        lowercase_letters = string.ascii_lowercase
-        uppercase_letters = string.ascii_uppercase
-        digits = string.digits
-        special_characters = string.punctuation
-        pool = lowercase_letters + uppercase_letters + digits + special_characters
-        password = random.choice(lowercase_letters) + random.choice(uppercase_letters) + random.choice(digits) + random.choice(special_characters)
-        password += "" .join(random.choice(pool) for _ in range(length - 4))
-        print(f"Generated strong password:{password}")
+        password = passgen(length=16)
+        print(f"Generated strong password: {password}")
 
-# gerneartes passphrase ( need to import some more to make it diverse)
+# gernerates passphrase ( need to import some more to make it diverse)
     def generate_passphrase(self):
-        wordlist = ["apple", "banana", "cherry", "dog", "elephant", "frog"]
+        wordlist = [
+            "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew",
+            "kiwi", "lemon", "mango", "nectarine", "orange", "papaya", "quince", "raspberry",
+            "strawberry", "tangerine", "ugli", "watermelon", "yuzu", "avocado", "beet", "carrot",
+            "daikon", "endive", "fennel", "ginger", "horseradish", "jalapeno", "kale", "lettuce",
+            "mushroom", "nutmeg", "onion", "parsnip", "quinoa", "radish", "spinach", "tomato",
+            "umeboshi", "vinegar", "wasabi", "xanthan", "yam", "zucchini", "ant", "bird", "cat",
+            "dog", "elephant", "frog", "goat", "horse", "iguana", "jaguar", "kangaroo", "lion",
+            "mouse", "newt", "octopus", "penguin", "quokka", "rabbit", "snake", "tiger", "urchin",
+            "vulture", "walrus", "xray", "yak", "zebra", "alpha", "bravo", "charlie", "delta",
+            "echo", "foxtrot", "golf", "hotel", "india", "juliet", "kilo", "lima", "mike", "november",
+            "oscar", "papa", "quebec", "romeo", "sierra", "tango", "uniform", "victor", "whiskey",
+            "xray", "yankee", "zulu", "azure", "blue", "cyan", "denim", "emerald", "fuchsia", "gold",
+            "hazel", "ivory", "jade", "khaki", "lavender", "maroon", "navy", "olive", "pink", "quartz",
+            "red", "silver", "turquoise", "umber", "violet", "white", "xanadu", "yellow", "zephyr"
+        ]
+
         passphrase = ' '.join(random.choice(wordlist) for _ in range(4))
         print(f"Generated passphrase: {passphrase}")
 
