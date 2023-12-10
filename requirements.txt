@@ -1,5 +1,5 @@
 cryptography
-password-strength
+zxcvbn-python
 easygui
 requests
 pyfiglet
