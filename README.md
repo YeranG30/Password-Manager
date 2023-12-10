@@ -1,12 +1,29 @@
 # Password-Manager
 Description
-YG's Password Manager is a secure, user-friendly password manager that stores and manages your passwords. With a superhero-themed interface, it offers multiple functionalities like adding, fetching, and checking password security. It uses SQLite for database storage and Argon2 for password hashing.
+The Python-based Password Manager allows users to securely store and manage their passwords, offering features such as password strength assessment, password generation, and easy retrieval of stored passwords. Users can add, fetch, check for password breaches, generate strong passwords, generate passphrases, remove passwords, and change passwords through a user-friendly command-line interface.
 
 Features
-Secure password storage using SQLite and Argon2
-Password strength check
-Password breach check using the Pwned Passwords API
-Password and passphrase generation
+User Login and Account Creation
+Secure Password Storage
+Password Retrieval
+Password Strength Check
+Password Breach Check
+Password Generation
+Passphrase Generation
+Password Removal
+Password Change
+SQLite Database
+Command-Line Interface (CLI)
+Data Encryption
+Password Strength Requirements
+Safe Application Exit
+
+### Step 1: Install Dependencies
+
+Before you can run the application, you need to install the required dependencies. Open your terminal and run the following commands:
+
+```bash
+pip install -r requirements.txt
 
 Installation
 Clone this repository:
