@@ -2,25 +2,20 @@
 Description
 The Python-based Password Manager allows users to securely store and manage their passwords, offering features such as password strength assessment, password generation, and easy retrieval of stored passwords. Users can add, fetch, check for password breaches, generate strong passwords, generate passphrases, remove passwords, and change passwords through a user-friendly command-line interface.
 
-# Clone the repository:
+# Installation Steps:
 ```
 git clone https://github.com/YeranG30/YGs-Password-Manager.git
 ```
-
-# Navigate into the project directory:
 ```
 cd Password-Manager
 ```
-
-# Install the required packages:
 ```
 pip install -r requirements.txt
 ```
-
-# To run the application, execute:
 ```
 python3 Pwmngr.py
 ```
+
 # Section 1: Project Overview
 <img width="577" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/97a18190-0784-48f6-8a52-bcae4484c73d">
 
