@@ -18,20 +18,18 @@ Data Encryption
 Password Strength Requirements
 Safe Application Exit
 
-### Step 1: Install Dependencies
 
-Clone this repository:
-```git clone https://github.com/YeranG30/YGs-Password-Manager.git
+# Clone the repository:
+git clone https://github.com/YeranG30/YGs-Password-Manager.git
 
-### Navigate into the project directory:
+# Navigate into the project directory:
+cd Password-Manager
 
-```cd Password-Manager
+# Install the required packages:
+pip install -r requirements.txt
 
-### Install the required packages:
-```pip install -r requirements.txt
-
-###To run the application, execute:
-```python Pwmngr.py
+# To run the application, execute:
+python Pwmngr.py
 
 
 
