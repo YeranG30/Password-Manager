@@ -1,7 +1,7 @@
-cryptography
-zxcvbn-python
-easygui
-requests
-pyfiglet
-passlib
-passgen
+cryptography==3.4.7
+zxcvbn==4.4.26
+easygui==0.99.0
+pyfiglet==0.8.post1
+argon2-cffi==20.1.0
+passlib==1.7.4
+passgen==1.3
