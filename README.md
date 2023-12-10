@@ -20,7 +20,7 @@ Safe Application Exit
 
 
 # Clone the repository:
-git clone https://github.com/YeranG30/YGs-Password-Manager.git
+```git clone https://github.com/YeranG30/YGs-Password-Manager.git```
 
 # Navigate into the project directory:
 cd Password-Manager
