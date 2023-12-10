@@ -23,15 +23,14 @@ Safe Application Exit
 Clone this repository:
 ```git clone https://github.com/YeranG30/YGs-Password-Manager.git
 
-Navigate into the project directory:
+### Navigate into the project directory:
 
 ```cd Password-Manager
 
-Install the required packages:
+### Install the required packages:
 ```pip install -r requirements.txt
 
-Usage
-To run the application, execute:
+###To run the application, execute:
 ```python Pwmngr.py
 
 
