@@ -2,23 +2,6 @@
 Description
 The Python-based Password Manager allows users to securely store and manage their passwords, offering features such as password strength assessment, password generation, and easy retrieval of stored passwords. Users can add, fetch, check for password breaches, generate strong passwords, generate passphrases, remove passwords, and change passwords through a user-friendly command-line interface.
 
-Features
-User Login and Account Creation
-Secure Password Storage
-Password Retrieval
-Password Strength Check
-Password Breach Check
-Password Generation
-Passphrase Generation
-Password Removal
-Password Change
-SQLite Database
-Command-Line Interface (CLI)
-Data Encryption
-Password Strength Requirements
-Safe Application Exit
-
-
 # Clone the repository:
 ```
 git clone https://github.com/YeranG30/YGs-Password-Manager.git
@@ -44,8 +27,10 @@ python3 Pwmngr.py
 The "YG's Password Manager" is a Python-based password management tool designed to enhance security and convenience for users. It leverages Python, SQLite, cryptography, and zxcvbn to offer a comprehensive set of features. Users can create and manage accounts with unique usernames and master passwords, securely store website passwords, and retrieve them as needed. The application checks password strength, alerts users to weak passwords, and even verifies if a password has been compromised in known data breaches. Additionally, it provides password and passphrase generation, password removal, and change capabilities. All data is stored in an encrypted SQLite database, and the tool operates through a command-line interface (CLI) for straightforward usability. "YG's Password Manager" ensures data security, encourages strong passwords, and simplifies the management of sensitive credentials.
 
 # Section 2: Key Features
+User Account Management: Users can create accounts with unique usernames and master passwords or log in with existing credentials. 
+
 <img width="469" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/be74cc22-7925-4db4-9dae-8957af992afd">
-User Account Management: Users can create accounts with unique usernames and master passwords or log in with existing credentials.
+
 
 Secure Password Storage: The application securely stores website names and their corresponding passwords in an SQLite database.
 
