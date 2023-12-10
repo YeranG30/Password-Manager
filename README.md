@@ -25,14 +25,19 @@ git clone https://github.com/YeranG30/YGs-Password-Manager.git
 ```
 
 # Navigate into the project directory:
+```
 cd Password-Manager
+```
 
 # Install the required packages:
+```
 pip install -r requirements.txt
+```
 
 # To run the application, execute:
-python Pwmngr.py
-
+```
+python3 Pwmngr.py
+```
 
 
 License
