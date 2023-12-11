@@ -1,5 +1,5 @@
 # Password-Manager
-Description
+Description:
 The Python-based Password Manager allows users to securely store and manage their passwords, offering features such as password strength assessment, password generation, and easy retrieval of stored passwords. Users can add, fetch, check for password breaches, generate strong passwords, generate passphrases, remove passwords, and change passwords through a user-friendly command-line interface.
 
 # Installation Steps:
