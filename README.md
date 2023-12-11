@@ -26,50 +26,50 @@ python3 Pwmngr.py
 The "YG's Password Manager" is a Python-based password management tool designed to enhance security and convenience for users. It leverages Python, SQLite, cryptography, and zxcvbn to offer a comprehensive set of features. Users can create and manage accounts with unique usernames and master passwords, securely store website passwords, and retrieve them as needed. The application checks password strength, alerts users to weak passwords, and even verifies if a password has been compromised in known data breaches. Additionally, it provides password and passphrase generation, password removal, and change capabilities. All data is stored in an encrypted SQLite database, and the tool operates through a command-line interface (CLI) for straightforward usability. "YG's Password Manager" ensures data security, encourages strong passwords, and simplifies the management of sensitive credentials.
 
 # Section 2: Key Features
-User Account Management: Users can create accounts with unique usernames and master passwords or log in with existing credentials using the encrypted easygui passwordbox. 
+1. User Account Management: Users can create accounts with unique usernames and master passwords or log in with existing credentials using the encrypted easygui passwordbox. 
 
-<img width="469" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/be74cc22-7925-4db4-9dae-8957af992afd">
+'''<img width="469" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/be74cc22-7925-4db4-9dae-8957af992afd">'''
 
 
-Secure Password Storage: The application securely stores website names and their corresponding passwords in an SQLite database.
+2. Secure Password Storage: The application securely stores website names and their corresponding passwords in an SQLite database.
 
 <img width="563" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/65467d3f-40eb-4063-873e-b0c385d1c04d">
 
 <img width="397" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/342e0b69-e99d-4cbd-88e5-3cb22e2071ab">
 
 
-Password Retrieval: Users can retrieve stored passwords for specific websites by providing the website name.
+3. Password Retrieval: Users can retrieve stored passwords for specific websites by providing the website name.
 
 <img width="591" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/e79d3462-fa80-4a92-8d82-39cd2c6a6c32">
 
-Password Strength Checking: Passwords are evaluated for strength using the zxcvbn library, providing feedback on weak passwords to enhance security. The application enforces password strength requirements to promote strong and secure passwords.
+4. Password Strength Checking: Passwords are evaluated for strength using the zxcvbn library, providing feedback on weak passwords to enhance security. The application enforces password strength requirements to promote strong and secure passwords.
 
 <img width="500" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/a406e4eb-f447-4a0e-8213-c050cb2bed12">
 
-Password Breach Checking: Users can check if a password has been compromised in known data breaches using the "Have I Been Pwned" API.
+5. Password Breach Checking: Users can check if a password has been compromised in known data breaches using the "Have I Been Pwned" API.
 
 <img width="577" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/73aef1f2-2594-4f5b-9921-e3327a4c9c9f">
 
 <img width="472" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/a62ea545-eb2d-46be-ab21-6d85185fed0e">
 
 
-Password and Passphrase Generation: The tool allows users to generate strong, random passwords of specified lengths and passphrases by combining random words from a predefined wordlist.
+6. Password and Passphrase Generation: The tool allows users to generate strong, random passwords of specified lengths and passphrases by combining random words from a predefined wordlist.
 
 <img width="418" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/993d2d52-e326-47c2-af88-a40cb79584c4">
 
 <img width="349" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/068a174b-aa11-4dea-9b4b-93a34ead6c78">
 
 
-Password Removal and Change: Users have the capability to remove passwords associated with specific website names or change the password associated with a website.
+7. Password Removal and Change: Users have the capability to remove passwords associated with specific website names or change the password associated with a website.
 
 <img width="532" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/ccc259f8-af40-4aa5-9dae-79107897659b">
 
 
-SQLite Database: The application uses an SQLite database to efficiently store user account information and encrypted passwords.
+8. SQLite Database: The application uses an SQLite database to efficiently store user account information and encrypted passwords.
 
 <img width="883" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/ddb0ecf7-98e7-4352-83e3-1ac53ba2b4b5">
 
-Data Encryption: Passwords stored in the database are encrypted using the Fernet encryption scheme, ensuring that sensitive data remains secure.
+9. Data Encryption: Passwords stored in the database are encrypted using the Fernet encryption scheme, ensuring that sensitive data remains secure.
 
 <img width="952" alt="image" src="https://github.com/YeranG30/Password-Manager/assets/74067706/e70e98a0-2d0e-434c-8981-e8011a2274a4">
 
